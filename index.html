@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#143b34">
+  <meta name="description" content="A private guided practice for noticing, tending, and learning from the conditions in which belonging grows.">
+  <title>Belonging Conditions Practice</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to the practice</a>
+  <svg id="belongingField" class="belonging-field" viewBox="0 0 1600 1000" preserveAspectRatio="none" aria-hidden="true">
+    <path class="connection connection-a" data-signals="0 1" d="M-80 210 C230 10 355 320 640 150 S1090 20 1690 230"></path>
+    <path class="connection connection-b" data-signals="2 5" d="M-90 390 C230 600 425 150 760 400 S1260 600 1690 350"></path>
+    <path class="connection connection-c" data-signals="3 4" d="M-70 700 C290 450 470 880 800 650 S1250 480 1690 720"></path>
+    <path class="connection connection-d" data-signals="6 7" d="M-80 845 C280 1020 490 610 870 835 S1340 970 1700 790"></path>
+    <g class="field-nodes">
+      <circle data-signal="0" cx="170" cy="184" r="7"></circle><circle data-signal="1" cx="520" cy="190" r="7"></circle>
+      <circle data-signal="2" cx="900" cy="285" r="7"></circle><circle data-signal="3" cx="1320" cy="205" r="7"></circle>
+      <circle data-signal="4" cx="245" cy="710" r="7"></circle><circle data-signal="5" cx="655" cy="660" r="7"></circle>
+      <circle data-signal="6" cx="1050" cy="785" r="7"></circle><circle data-signal="7" cx="1450" cy="700" r="7"></circle>
+    </g>
+  </svg>
+
+  <main class="app-shell" id="app">
+    <header class="hero">
+      <p class="eyebrow">SONGBRIDGE · CONDITIONS PRACTICE</p>
+      <div class="title-row">
+        <div>
+          <h1>Belonging</h1>
+          <p class="definition">The growing experience of being recognized, able to enter and contribute, and expected to matter—without becoming less oneself.</p>
+        </div>
+        <div class="hero-side">
+          <details class="belonging-primer">
+            <summary>Why belonging? <span>See what it makes possible</span></summary>
+            <div class="primer-body">
+              <p class="primer-lede">Belonging is more than comfort or proximity. It develops when a person can recognize: <strong>I am known here. I can enter. What I bring can matter.</strong></p>
+              <div class="primer-moves" aria-label="Ways belonging can show up">
+                <article><strong>Be recognized</strong><span>Seen with specificity—not merely present or managed.</span></article>
+                <article><strong>Enter as oneself</strong><span>Access participation without surrendering language, identity, pace, or way of knowing.</span></article>
+                <article><strong>Become consequential</strong><span>Experience one’s presence and contribution shaping what happens next.</span></article>
+              </div>
+              <p class="primer-note"><strong>Belonging does not require sameness.</strong> Withdrawal, guardedness, or silence may describe the relationship between a person and the surrounding conditions—not a fixed trait inside the person.</p>
+            </div>
+          </details>
+          <div class="hero-actions">
+            <button type="button" id="newCycle" class="primary-button">Begin a new field note</button>
+            <button type="button" id="showPatterns" class="secondary-button">View emerging patterns</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="orientation" aria-label="Belonging conditions proposition">
+      <article><p class="orientation-label">WHAT IF</p><p>Belonging is not something people either possess or lack, but an experience that surrounding conditions continually shape?</p></article>
+      <article><p class="orientation-label">BECAUSE</p><p>Recognition, meaningful participation, identity safety, and contribution become possible through repeated relational and structural invitations.</p></article>
+      <article><p class="orientation-label">THEN</p><p>Notice who can enter, choose one part of the field to tend, and return to learn what becomes easier, harder, or newly possible.</p></article>
+    </div>
+
+    <aside id="draftNotice" class="draft-notice" hidden>
+      <div class="draft-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="17" cy="31" r="5"></circle><circle cx="46" cy="20" r="5"></circle><circle cx="43" cy="47" r="5"></circle><path d="M21 29 41 22M20 35l18 9M45 25l-1 17"></path></svg></div>
+      <div class="draft-copy"><p class="step-kicker">SAVED FIELD NOTE</p><strong>A constellation is still forming.</strong><span id="draftDescription"></span><blockquote id="draftExcerpt"></blockquote></div>
+      <button type="button" id="resumeDraft" class="secondary-button">Continue this entry</button>
+    </aside>
+
+    <nav id="stepNav" class="step-nav" aria-label="Practice steps">
+      <button type="button" data-id="notice" class="on"><span>01</span> Notice</button>
+      <button type="button" data-id="interpret"><span>02</span> Interpret</button>
+      <button type="button" data-id="tend"><span>03</span> Tend</button>
+      <button type="button" data-id="return"><span>04</span> Return</button>
+      <button type="button" data-id="archive"><span>05</span> My entries</button>
+      <button type="button" data-id="patterns"><span>06</span> Patterns</button>
+    </nav>
+
+    <div id="workspace" class="workspace">
+      <section id="notice" class="panel screen on" aria-labelledby="noticeTitle">
+        <div class="section-heading">
+          <div><p class="step-kicker">01 · NOTICE</p><h2 id="noticeTitle">Gather signals before explaining them.</h2><p class="section-intro">Choose what is genuinely present. Absence can be a signal too; these are observations, not scores.</p></div>
+          <button type="button" class="text-button" data-go="archive">My entries</button>
+        </div>
+
+        <fieldset>
+          <legend>What part of the field are you looking at?</legend>
+          <div id="contexts" class="choice-grid context-grid"></div>
+          <input id="otherContext" class="text-input other-context" type="text" placeholder="Name the context" aria-label="Name another context" hidden>
+        </fieldset>
+
+        <fieldset>
+          <legend>What are you noticing?</legend>
+          <div id="signals" class="signal-grid"></div>
+        </fieldset>
+
+        <label class="field-label" for="note">Field note <span>optional</span></label>
+        <textarea id="note" placeholder="What happened? What did you see, hear, or notice without explaining it yet?"></textarea>
+        <div class="draft-save-row">
+          <p id="draftStatus" class="status-message" role="status" aria-live="polite">Drafts save privately in this browser as you work.</p>
+          <button type="button" id="saveFieldNote" class="secondary-button">Save this field note</button>
+        </div>
+        <div class="flow-actions end-aligned"><button type="button" class="primary-button" data-go="interpret">Continue to Interpret <span aria-hidden="true">→</span></button></div>
+      </section>
+
+      <section id="interpret" class="panel screen" aria-labelledby="interpretTitle">
+        <div class="section-heading"><div><p class="step-kicker">02 · INTERPRET</p><h2 id="interpretTitle">Hold the read lightly.</h2><p class="section-intro">A condition is not a trait of the people in the room. It is a working hypothesis about the field around them.</p></div><p class="gentle-reminder">A hypothesis—not a verdict.</p></div>
+        <fieldset>
+          <legend>How does belonging seem to be experienced right now?</legend>
+          <div id="states" class="choice-grid state-grid"></div>
+        </fieldset>
+        <label class="field-label" for="hyp">What might be shaping what you noticed? <span>optional</span></label>
+        <textarea id="hyp" placeholder="Belonging may be becoming easier or harder to experience because…"></textarea>
+
+        <aside class="compass-threshold" aria-labelledby="compassTitle">
+          <div class="compass-heading">
+            <p class="step-kicker">FOR THE PERSON TENDING THE FIELD</p>
+            <h3 id="compassTitle">Let belonging orient the next move.</h3>
+            <p><em>Belonging Is the Compass</em> is a song for moments of transition. Here, it offers an optional place to reorient before deciding what to tend.</p>
+          </div>
+          <blockquote>What would change about your next decision if belonging were the compass—not compliance, urgency, or certainty?</blockquote>
+          <div class="compass-listen">
+            <div class="compass-now-playing"><span aria-hidden="true">✦</span><div><small>OPTIONAL ORIENTATION</small><strong>Belonging Is the Compass</strong><em>Adult transition song · 4:40</em></div></div>
+            <audio id="compassAudio" controls preload="metadata" src="audio/belonging-is-the-compass.mp3" aria-label="Play Belonging Is the Compass">Your browser does not support the audio player.</audio>
+          </div>
+          <div class="compass-song-actions song-actions">
+            <button type="button" class="primary-button" data-project-song="compass">Project lyrics</button>
+            <a class="resource-button" href="audio/belonging-is-the-compass.mp3" download>Download song</a>
+            <a class="resource-button" href="downloads/belonging-is-the-compass-lyrics.pdf" download>Download lyric sheet</a>
+            <a class="resource-button" href="downloads/belonging-is-the-compass-practice-guide.pdf" download>Download practice guide</a>
+          </div>
+          <div class="song-uses compass-uses" aria-label="Ways to use Belonging Is the Compass">
+            <article><strong>Transition</strong><span>Let change be felt before it has to be explained.</span></article>
+            <article><strong>Before a difficult decision</strong><span>Reorient toward connection before urgency decides.</span></article>
+            <article><strong>Personal reorientation</strong><span>Carry one word or intention into the next move.</span></article>
+          </div>
+          <p class="compass-carry song-notice"><strong>Notice next:</strong> What word or intention traveled into the next decision? What is belonging asking you to notice before you act?</p>
+        </aside>
+
+        <div class="flow-actions"><button type="button" class="secondary-button" data-go="notice"><span aria-hidden="true">←</span> Back</button><button type="button" class="primary-button" data-go="tend">Choose one thing to tend <span aria-hidden="true">→</span></button></div>
+      </section>
+
+      <section id="tend" class="panel screen" aria-labelledby="tendTitle">
+        <div class="section-heading"><div><p class="step-kicker">03 · TEND</p><h2 id="tendTitle">Make one meaningful adjustment.</h2><p class="section-intro">Practice is a hypothesis. Choose something small enough to try—and specific enough to notice again. Three music practices include playable SongBridge recordings.</p></div><p class="gentle-reminder">The invitation must be real.</p></div>
+        <div id="moveFilters" class="move-filters" aria-label="Filter practices by part of the ecology"></div>
+        <div class="practices" id="practiceGrid"></div>
+
+        <aside id="practiceDetail" class="practice-detail" hidden>
+          <div class="detail-heading"><div><p id="practiceKind" class="step-kicker"></p><h3 id="practiceName"></h3><p id="practiceDescription" class="detail-description"></p></div><button type="button" id="closeDetail" class="icon-button" aria-label="Close practice detail">×</button></div>
+          <div class="detail-grid">
+            <article><h4>Why this may help</h4><p id="practiceWhy"></p></article>
+            <article><h4>Try it like this</h4><p id="practiceHow"></p></article>
+            <article><h4>Protect belonging</h4><p id="practiceGuard"></p></article>
+            <article><h4>Notice afterward</h4><p id="practiceWatch"></p></article>
+          </div>
+          <section id="songExperience" class="song-experience" hidden aria-labelledby="songExperienceTitle">
+            <div class="song-experience-heading">
+              <div class="song-orbit" aria-hidden="true">
+                <svg viewBox="0 0 90 90"><circle cx="45" cy="45" r="28"></circle><path d="M9 49c14-22 25 19 39-3s24 17 34-5"></path><circle cx="19" cy="37" r="3"></circle><circle cx="70" cy="30" r="3"></circle></svg>
+              </div>
+              <div class="song-copy">
+                <p class="step-kicker">SONGBRIDGE LISTENING ROOM</p>
+                <h4 id="songExperienceTitle"><span id="songTitle"></span></h4>
+                <p id="listenFor"></p>
+              </div>
+            </div>
+            <div class="song-player-shell">
+              <div class="song-now-playing"><span aria-hidden="true">♪</span><div><small>READY TO PLAY</small><strong id="songTrackTitle"></strong><em id="songTrackNote"></em></div></div>
+              <audio id="songAudio" controls preload="metadata" aria-label="SongBridge song player">Your browser does not support the audio player.</audio>
+            </div>
+            <div class="song-actions">
+              <button type="button" id="projectPracticeLyrics" class="primary-button">Project lyrics</button>
+              <a id="downloadPracticeSong" class="resource-button" download>Download song</a>
+              <a id="downloadPracticeLyrics" class="resource-button" download>Download lyric sheet</a>
+              <a id="downloadPracticeGuide" class="resource-button" download>Download practice guide</a>
+            </div>
+            <div id="songUses" class="song-uses"></div>
+            <p class="song-notice"><strong>Notice next:</strong> <span id="songNoticePrompt"></span></p>
+          </section>
+          <label class="field-label" for="adaptation">Adapt it for this context <span>optional</span></label>
+          <textarea id="adaptation" placeholder="What would make this invitation genuine, accessible, and fitting here?"></textarea>
+          <button type="button" id="choosePractice" class="primary-button">Use this practice</button>
+        </aside>
+
+        <div class="custom-move">
+          <div><p class="step-kicker">FIELD-CREATED MOVE</p><h3>Add a move that fits this moment.</h3><p>The useful move may already be known by the person closest to the setting. Name it rather than forcing the moment into a preset.</p></div>
+          <div class="custom-row"><input id="customTitle" type="text" placeholder="Name the move"><input id="customWhy" type="text" placeholder="What might it make more possible?"><button type="button" id="addCustom" class="secondary-button">Add and select</button></div>
+        </div>
+
+        <div id="selectedPractice" class="selected-practice" aria-live="polite"><p class="step-kicker">SELECTED MOVE</p><h3 id="choice">None yet</h3><p id="choiceWhy">Explore a practice above or create one that fits the field.</p></div>
+        <div class="flow-actions"><button type="button" class="secondary-button" data-go="interpret"><span aria-hidden="true">←</span> Back</button><button type="button" class="primary-button" data-go="return">Set a return point <span aria-hidden="true">→</span></button></div>
+      </section>
+
+      <section id="return" class="panel screen" aria-labelledby="returnTitle">
+        <div class="section-heading"><div><p class="step-kicker">04 · RETURN</p><h2 id="returnTitle">Give the field time to respond.</h2><p class="section-intro">Return is not proof. It is another observation from a changed moment.</p></div><p class="gentle-reminder">Return with curiosity.</p></div>
+
+        <div class="return-grid">
+          <label>Return after<select id="when"><option>Later today</option><option selected>Tomorrow</option><option>Next week</option><option>After the next gathering</option><option>After trying the practice three times</option></select></label>
+          <label>Look especially for<select id="look"><option>Who enters participation more easily</option><option>Who is invited by peers</option><option>Whose language or identity becomes more visible</option><option>Who takes a new risk</option><option>Whose contribution shapes what happens next</option><option>Where belonging remains uneven</option></select></label>
+        </div>
+
+        <section class="cycle-builder" aria-labelledby="cycleTitle">
+          <div class="subsection-heading"><div><p class="step-kicker">TENDING CYCLE</p><h3 id="cycleTitle">Turn one move into a practice.</h3></div><span class="optional-pill">Revisable</span></div>
+          <label class="field-label" for="goal">What do you hope will become more possible?</label>
+          <textarea id="goal" placeholder="For example: More learners experience their ideas being invited, received, and used by the group."></textarea>
+          <div class="cycle-grid">
+            <label>Practice rhythm<select id="frequency"><option>Once</option><option selected>Daily</option><option>Three times</option><option>At each gathering</option><option>Custom</option></select></label>
+            <label id="customFrequencyLabel" hidden>Custom rhythm<input id="customFrequency" class="text-input" type="text" placeholder="Name a useful rhythm" hidden></label>
+            <label>Return window<select id="timeframe"><option value="3" selected>Three days</option><option value="7">One week</option><option value="14">Two weeks</option><option value="custom">Choose a date</option></select></label>
+            <label>Return date<input id="checkInDate" class="text-input date-input" type="date"></label>
+          </div>
+          <label class="field-label" for="guardrail">What must remain true for this practice to support belonging?</label>
+          <textarea id="guardrail" placeholder="For example: Participation remains invitational; no learner is required to disclose or represent a group."></textarea>
+        </section>
+
+        <div class="bring-back"><p class="step-kicker">BRING-BACK</p><h3>Belonging</h3><p id="summary">Choose a practice and return point.</p></div>
+        <div class="summary-actions"><button type="button" id="save" class="primary-button">Begin this tending cycle</button><button type="button" id="copyPlan" class="secondary-button">Copy carry-forward plan</button></div>
+        <p id="saved" class="status-message" role="status" aria-live="polite"></p>
+        <div class="flow-actions"><button type="button" class="secondary-button" data-go="tend"><span aria-hidden="true">←</span> Back</button><button type="button" class="text-button" data-go="archive">View my entries <span aria-hidden="true">→</span></button></div>
+      </section>
+
+      <section id="archive" class="panel screen" aria-labelledby="archiveTitle">
+        <div class="section-heading archive-heading">
+          <div><p class="step-kicker">05 · REMEMBER</p><h2 id="archiveTitle">My Entries</h2><p class="section-intro">Return to an observation, continue developing it, or notice again after a practice. Everything here remains in this browser.</p></div>
+          <div class="archive-actions"><button type="button" id="beginNewEntry" class="primary-button">Begin new entry</button><button type="button" id="exportBtn" class="secondary-button">Export entries</button><button type="button" id="clearBtn" class="danger-button">Clear entries</button></div>
+        </div>
+        <div id="archiveStats" class="stats"></div>
+        <div id="activeCycles" class="active-cycles"></div>
+        <div id="timeline" class="timeline"></div>
+      </section>
+
+      <section id="patterns" class="panel screen" aria-labelledby="patternsTitle">
+        <div class="section-heading pattern-heading">
+          <div><p class="step-kicker">06 · PATTERN VIEW</p><h2 id="patternsTitle">Recognition before explanation.</h2><p class="section-intro">Patterns are invitations to look again, not diagnoses. Concentration is not automatically a problem; it is something made visible enough to examine.</p></div>
+          <button type="button" id="seedDemo" class="secondary-button">Preview with sample notes</button>
+        </div>
+        <div class="pattern-intro">
+          <article class="current-read"><p class="step-kicker">CURRENT READ</p><h3 id="patternRead">Not enough observations yet.</h3><p id="patternReadNote">Two or more field notes will begin to make recurrence visible.</p></article>
+          <article><p class="step-kicker">CONDITION TRAJECTORY</p><div id="trajectory" class="trajectory"></div></article>
+        </div>
+        <div class="patterns-grid">
+          <article><p class="step-kicker">SIGNAL RECURRENCE</p><h3>What keeps appearing?</h3><div id="recurrence"></div></article>
+          <article><p class="step-kicker">PRACTICE + RESPONSE</p><h3>What appeared after a move?</h3><div id="practiceResponse"></div></article>
+          <article class="repertoire"><p class="step-kicker">TENDING REPERTOIRE</p><h3>How has the field been tended?</h3><p class="quiet">This view notices the kinds of moves selected across cycles—not whether any category is inherently better.</p><div id="repertoireBars"></div><div id="repertoireNote" class="field-insight"></div></article>
+          <article><p class="step-kicker">MOVE VARIETY</p><h3>What has and has not been explored?</h3><div id="moveVariety"></div></article>
+          <article><p class="step-kicker">OPEN QUESTIONS</p><h3>What remains worth noticing?</h3><div id="openQuestions"></div></article>
+          <article class="next-notice"><p class="step-kicker">NEXT NOTICING</p><h3>Where might attention travel next?</h3><p id="nextPrompt"></p></article>
+        </div>
+      </section>
+    </div>
+
+    <p class="privacy-note"><span aria-hidden="true">◉</span> Your reflections remain in this browser unless you choose to copy or export them.</p>
+    <footer class="process-footer" aria-label="Belonging conditions cycle">
+      <span class="footer-signature"><b>TEND WHAT YOU CAN</b></span><i aria-hidden="true">·</i>
+      <span><b>NOTICE</b> who can enter.</span><i aria-hidden="true">→</i>
+      <span><b>TEND</b> what shapes the invitation.</span><i aria-hidden="true">→</i>
+      <span><b>RETURN</b> to what changes.</span>
+    </footer>
+  </main>
+
+  <dialog id="lyricsDialog" class="lyrics-dialog" aria-labelledby="lyricsTitle">
+    <div class="lyrics-stage">
+      <header class="lyrics-header">
+        <div><p class="lyrics-brand">SONGBRIDGE · PROJECTED LYRICS</p><h2 id="lyricsTitle">Lyrics</h2><p id="lyricsSubtitle" class="lyrics-subtitle"></p></div>
+        <button type="button" id="closeLyrics" class="lyrics-close" aria-label="Close projected lyrics">×</button>
+      </header>
+      <div class="lyrics-toolbar">
+        <p id="lyricsInvitation">Listening, singing, moving, drawing, or simply being present can all be ways in.</p>
+        <button type="button" id="lyricsPlayback" class="projection-playback">Play song</button>
+      </div>
+      <div class="lyrics-window">
+        <div id="lyricsFlow" class="lyrics-flow" tabindex="0" aria-label="Lyrics. They follow the song while it plays and can be scrolled while paused."></div>
+      </div>
+      <footer class="lyrics-footer">
+        <span id="lyricsWindowStatus" aria-live="polite">Ready — scroll to preview, or play to follow the song.</span>
+      </footer>
+    </div>
+  </dialog>
+  <script src="song-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
